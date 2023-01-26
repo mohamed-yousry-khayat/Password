@@ -20,7 +20,7 @@ def mdp():
                        "\nUn chiffre."
                        "\nUn caractère spécial (!, @, #, $, %, ^, &, *).")
 
-        if len(psswrd) > 8:
+        if len(psswrd) >= 8:
             mdp_long = True
 
         for i in psswrd:
