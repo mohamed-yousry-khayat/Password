@@ -3,15 +3,15 @@ import hashlib as hash
 
 def mdp():
 
-    list_carac_spl = ["!", "@", "#", "$", "%", "^", "&", "*"]
-
     mdp_long = False
     mdp_min = False
     mdp_maj = False
     mdp_numb = False
     mdp_spl = False
+    mdp_valid = False
 
-    while mdp_long is False and mdp_min is False and mdp_maj is False and mdp_numb is False and mdp_spl is False:
+    while mdp_valid is False:
+        liste_carac_spl = ["!", "@", "#", "$", "%", "^", "&", "*"]
 
         psswrd = input("Veuillez saisir un mot de passe contentant les caractère suivant :"
                        "\n8 caractères."
@@ -22,28 +22,25 @@ def mdp():
 
         if len(psswrd) > 8:
             mdp_long = True
-        else:
-            print("Condition non respectée, mot de pase trop court ")
 
-        if psswrd.islower():
-            print("Condition non respectée, aucune minuscule")
-        else:
-            mdp_min = True
+        for i in psswrd:
+            if i.isupper():
+                mdp_maj = True
 
-        if psswrd.isupper():
-            print("Condition non respectée, aucune majuscule")
-        else:
-            mdp_maj = True
+        for i in psswrd:
+            if i.islower():
+                mdp_min = True
 
-        if psswrd.isdigit():
-            print("Condition non respectée, aucun chiffre")
-        else:
-            mdp_numb = True
+        for i in psswrd:
+            if i.isdigit():
+                mdp_numb = True
 
-        if psswrd not in list_carac_spl:
-            mdp_spl = True
-        else:
-            print("Condition non respectée, aucun caractère spécial")
+        for i in psswrd:
+            if i in liste_carac_spl:
+                mdp_spl = True
+
+        if mdp_long is True and mdp_min is True and mdp_maj is True and mdp_numb is True and mdp_spl is True:
+            mdp_valid = True
 
     print("Mot de passe valide, cryptage en cours")
 
